@@ -5,5 +5,18 @@
   "main": ".tmp/main/index.js",
   "repository": "git@github.com:WriterLighter/WriterLighter.git",
   "author": "Yugo Yagita <2000ygkn0713@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "@babel/preset-react": "^7.0.0-beta.40",
+    "electron": "^1.8.2"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0"
+  }
 }
