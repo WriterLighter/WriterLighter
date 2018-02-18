@@ -1,0 +1,9 @@
+{
+  "name": "writerlighter",
+  "version": "0.0.0",
+  "description": "小説を書く、テキストエディタ。",
+  "main": ".tmp/main/index.js",
+  "repository": "git@github.com:WriterLighter/WriterLighter.git",
+  "author": "Yugo Yagita <2000ygkn0713@gmail.com>",
+  "license": "MIT"
+}
