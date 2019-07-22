@@ -6,8 +6,12 @@
   "repository": "git@github.com:WriterLighter/WriterLighter.git",
   "author": "Yugo Yagita <2000ygkn0713@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "parcel ./src/index.html"
+  },
   "devDependencies": {
-    "parcel-bundler": "^1.12.3"
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
     "react": "^16.8.6",

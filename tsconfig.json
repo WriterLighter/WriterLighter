@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "removeComments": true,
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "node",
+    "newLine": "LF",
+    "outDir": "./lib/",
+    "target": "es5",
+    "sourceMap": true,
+    "declaration": true,
+    "lib": ["es2017", "dom"],
+    "noFallthroughCasesInSwitch": true,
+    "typeRoots": ["types", "node_modules/@types"],
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*"],
+  "exclude": [".git", "node_modules"]
+}
