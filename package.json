@@ -10,6 +10,7 @@
     "start": "parcel ./src/index.html"
   },
   "devDependencies": {
+    "@types/draft-js": "^0.10.34",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "@types/react-redux": "^7.1.1",
@@ -25,6 +26,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
+    "draft-js": "^0.11.0",
     "emotion": "^10.0.14",
     "react": "^16.0.0",
     "react-dom": "^16.8.6",
