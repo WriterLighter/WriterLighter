@@ -35,6 +35,7 @@
     "@emotion/styled": "^10.0.14",
     "dexie": "^2.0.4",
     "draft-js": "^0.11.0",
+    "effector": "^20.1.1",
     "emotion": "^10.0.14",
     "react": "^16.0.0",
     "react-dom": "^16.8.6",
