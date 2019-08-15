@@ -2,7 +2,7 @@
 import Dexie from "dexie";
 import { RawDraftContentState } from "draft-js";
 
-export type Novel = {
+export type NovelModel = {
   id: number;
   title: string;
   author: string;
@@ -10,7 +10,7 @@ export type Novel = {
 };
 
 class WLDatabase extends Dexie {
-  novels: Dexie.Table<Novel, number>;
+  novels: Dexie.Table<NovelModel, number>;
 
   constructor() {
     super("WriterLighter");

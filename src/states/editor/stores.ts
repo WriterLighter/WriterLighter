@@ -1,4 +1,4 @@
-import { convertFromRaw, EditorState } from 'draft-js';
+import { EditorState } from 'draft-js';
 import { openedNovel } from './../novels/stores';
 import { editorDomain } from './domain';
 import { change, load, open } from './events';
@@ -24,9 +24,7 @@ export const editors = editorDomain
         `partId: ${partId} is not found in novel: ${novel.title}`,
       );
     }
-    const editorState = EditorState.createWithContent(
-      convertFromRaw(novel.parts[partId]),
-    );
+    const editorState = EditorState.createWithContent(novel.parts[partId]);
     return state.map((editor, i) =>
       i === editorId ? { ...editor, editorState } : editor,
     );
