@@ -76,3 +76,26 @@ export const savePart = novlesDomain.effect<
     });
   },
 });
+
+export const createNovel = novlesDomain.effect<
+  Pick<NovelModel, 'title' | 'author'>,
+  NovelState
+>('createNovel', {
+  handler: async ({ title, author }) => {
+    const id = await database.novels.add({
+      title,
+      author,
+      parts: [convertToRaw(ContentState.createFromText(''))],
+    });
+
+    const novel = await database.novels.get(id);
+
+    if (novel == null) throw new Error(`novelId: ${id} is not found.`);
+
+    return {
+      ...novel,
+      parts: novel.parts.map(content => convertFromRaw(content)),
+    };
+  },
+});
+
