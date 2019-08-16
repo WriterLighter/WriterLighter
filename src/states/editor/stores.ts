@@ -4,7 +4,7 @@ import { editorDomain } from './domain';
 import { change, load, open } from './events';
 
 export interface Editor {
-    id: number;
+  id: number;
   partId?: number;
   editorState?: EditorState;
 }
