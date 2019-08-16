@@ -1,6 +1,7 @@
 import { injectGlobal } from 'emotion';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import 'regenerator-runtime';
 import App from './views/App';
 
 injectGlobal`
