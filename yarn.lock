@@ -2523,6 +2523,11 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
+effector-react@^20.2.2:
+  version "20.2.2"
+  resolved "https://registry.yarnpkg.com/effector-react/-/effector-react-20.2.2.tgz#e61a30f5d358e9818dade736aa4a8bdcdcbe4b53"
+  integrity sha512-wFYJvBcsze3JWiBaZSq5aFlw518A8nllNUukPDnlsKhAjcfxXK+nZSaoMDJ94vZd9zZnwu04ED0iCHYrPL5/2Q==
+
 effector@^20.1.1:
   version "20.1.1"
   resolved "https://registry.yarnpkg.com/effector/-/effector-20.1.1.tgz#dd33c3c77c0d5c21e8abf640e2b4749b74cff4f9"
@@ -5122,7 +5127,7 @@ regenerator-runtime@^0.12.0:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
   integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
 
-regenerator-runtime@^0.13.2:
+regenerator-runtime@^0.13.2, regenerator-runtime@^0.13.3:
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz#7cf6a77d8f5c6f60eb73c5fc1955b2ceb01e6bf5"
   integrity sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
