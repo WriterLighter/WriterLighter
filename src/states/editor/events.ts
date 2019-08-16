@@ -11,4 +11,3 @@ export const open = editorDomain.event('open');
 export const load = editorDomain.event<{ partId: number; editorId: number }>(
   'load',
 );
-
