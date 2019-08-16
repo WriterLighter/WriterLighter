@@ -3,13 +3,11 @@ import { openedNovel } from './../novels/stores';
 import { editorDomain } from './domain';
 import { change, load, open } from './events';
 
-export type Editor =
-  | { id: number }
-  | {
+export interface Editor {
     id: number;
-    partId: number;
-    editorState: EditorState;
-  };
+  partId?: number;
+  editorState?: EditorState;
+}
 
 export const editors = editorDomain
   .store<Editor[]>([])
