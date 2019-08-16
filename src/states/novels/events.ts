@@ -1,5 +1,7 @@
 import { ContentState, convertFromRaw, convertToRaw } from 'draft-js';
 import database, { NovelModel } from '../../database';
+import { change } from './../editor/events';
+import { editors } from './../editor/stores';
 import { novlesDomain } from './domain';
 import { openedNovel } from './stores';
 import { NovelState } from './types';
@@ -99,3 +101,13 @@ export const createNovel = novlesDomain.effect<
   },
 });
 
+change.watch(({ editorId, editorState }) => {
+  const editor = editors.getState().find(({ id }) => id === editorId);
+
+  if (editor != null && editor.partId != null) {
+    savePart({
+      partId: editor.partId,
+      content: editorState.getCurrentContent(),
+    });
+  }
+});
