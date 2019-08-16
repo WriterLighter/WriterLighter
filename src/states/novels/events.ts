@@ -49,6 +49,10 @@ export const saveInfo = novlesDomain.effect<
     const opened = openedNovel.getState();
     if (opened == null) throw new Error('novel is not opened');
 
+    if (opened.id == null) {
+      throw new Error('novel.id is not granted.');
+    }
+
     await database.novels.update(opened.id, changes);
   },
 });
@@ -62,6 +66,8 @@ export const savePart = novlesDomain.effect<
 
     const opened = openedNovel.getState();
     if (opened == null) throw new Error('novel is not opened');
+
+    if (opened.id == null) throw new Error('novel.id is not granted.');
 
     await database.novels.update(opened.id, {
       parts: opened.parts.map((part, i) =>

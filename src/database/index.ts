@@ -3,7 +3,7 @@ import Dexie from "dexie";
 import { RawDraftContentState } from "draft-js";
 
 export type NovelModel = {
-  id: number;
+  id?: number;
   title: string;
   author: string;
   parts: RawDraftContentState[];
