@@ -24,7 +24,7 @@ export const editors = editorDomain
     }
     const editorState = EditorState.createWithContent(novel.parts[partId]);
     return state.map((editor, i) =>
-      i === editorId ? { ...editor, editorState } : editor,
+      i === editorId ? { ...editor, editorState, partId } : editor,
     );
   })
   .on(change, (state, { editorState, editorId }) =>
