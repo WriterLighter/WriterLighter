@@ -2,11 +2,16 @@
 import Dexie from "dexie";
 import { RawDraftContentState } from "draft-js";
 
+export type PartModel = {
+  title: string;
+  content: RawDraftContentState;
+};
+
 export type NovelModel = {
   id?: number;
   title: string;
   author: string;
-  parts: RawDraftContentState[];
+  parts: PartModel[];
 };
 
 class WLDatabase extends Dexie {

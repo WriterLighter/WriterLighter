@@ -10,7 +10,9 @@ export const openedNovel = novlesDomain
     (state, { partId, content }) =>
       state && {
         ...state,
-        parts: state.parts.map((part, id) => (id === partId ? content : part)),
+        parts: state.parts.map((part, id) =>
+          id === partId ? { ...part, content } : part,
+        ),
       },
   )
   .on(

@@ -1,17 +1,30 @@
 import { ContentState, convertFromRaw, convertToRaw } from 'draft-js';
 import database, { NovelModel } from '../../database';
+import { PartModel } from './../../database/index';
 import { change } from './../editor/events';
 import { editors } from './../editor/stores';
 import { novlesDomain } from './domain';
 import { openedNovel } from './stores';
 import { NovelState, PartState } from './types';
 
-const partModelToState = (partModel: PartModel): PartState => ({...partModel, content: convertFromRaw(partModel.content)})
+const partModelToState = (partModel: PartModel): PartState => ({
+  ...partModel,
+  content: convertFromRaw(partModel.content),
+});
 
-const partStateToModel = (partState:PartState): PartModel => ({...partState, content: convertToRaw(partState.content)})
+const partStateToModel = (partState: PartState): PartModel => ({
+  ...partState,
+  content: convertToRaw(partState.content),
+});
 
-const novelModelToState = (novelModel: NovelModel): NovelState => ({...novelModel, parts: novelModel.parts.map(partModelToState)})
-const novelStateToModel = (novelState: NovelState): NovelModel => ({...novelState, parts: novelState.parts.map(partStateToModel)})
+const novelModelToState = (novelModel: NovelModel): NovelState => ({
+  ...novelModel,
+  parts: novelModel.parts.map(partModelToState),
+});
+const novelStateToModel = (novelState: NovelState): NovelModel => ({
+  ...novelState,
+  parts: novelState.parts.map(partStateToModel),
+});
 
 let lastDelayedSave: {
   timeoutId: number;
@@ -43,10 +56,7 @@ export const open = novlesDomain.effect<{ id: number }, NovelState>('open', {
     const novel = await database.novels.get(id);
     if (!novel) throw new Error(`novelId: ${id} not found.`);
     localStorage.setItem('openedNovelId', id.toString(10));
-    return {
-      ...novel,
-      parts: novel.parts.map(content => convertFromRaw(content)),
-    };
+    return novelModelToState(novel);
   },
 });
 
@@ -80,7 +90,7 @@ export const savePart = novlesDomain.effect<
 
     await database.novels.update(opened.id, {
       parts: opened.parts.map((part, i) =>
-        convertToRaw(i === partId ? content : part),
+        i === partId ? partStateToModel({ ...part, content }) : part,
       ),
     });
   },
@@ -91,20 +101,15 @@ export const createNovel = novlesDomain.effect<
   NovelState
 >('createNovel', {
   handler: async ({ title, author }) => {
-    const id = await database.novels.add({
+    const newNovelState: NovelState = {
       title,
       author,
-      parts: [convertToRaw(ContentState.createFromText(''))],
-    });
-
-    const novel = await database.novels.get(id);
-
-    if (novel == null) throw new Error(`novelId: ${id} is not found.`);
-
-    return {
-      ...novel,
-      parts: novel.parts.map(content => convertFromRaw(content)),
+      parts: [{ title: '名称未設定', content: ContentState.createFromText('') }],
     };
+
+    const id = await database.novels.add(novelStateToModel(newNovelState));
+
+    return { id, ...newNovelState };
   },
 });
 
