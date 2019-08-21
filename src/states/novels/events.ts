@@ -4,7 +4,14 @@ import { change } from './../editor/events';
 import { editors } from './../editor/stores';
 import { novlesDomain } from './domain';
 import { openedNovel } from './stores';
-import { NovelState } from './types';
+import { NovelState, PartState } from './types';
+
+const partModelToState = (partModel: PartModel): PartState => ({...partModel, content: convertFromRaw(partModel.content)})
+
+const partStateToModel = (partState:PartState): PartModel => ({...partState, content: convertToRaw(partState.content)})
+
+const novelModelToState = (novelModel: NovelModel): NovelState => ({...novelModel, parts: novelModel.parts.map(partModelToState)})
+const novelStateToModel = (novelState: NovelState): NovelModel => ({...novelState, parts: novelState.parts.map(partStateToModel)})
 
 let lastDelayedSave: {
   timeoutId: number;
