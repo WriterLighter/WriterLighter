@@ -4,7 +4,7 @@ import { editorDomain } from './domain';
 import { change, load, open } from './events';
 
 export interface Editor {
-    id: number;
+  id: number;
   partId?: number;
   editorState?: EditorState;
 }
@@ -22,7 +22,9 @@ export const editors = editorDomain
         `partId: ${partId} is not found in novel: ${novel.title}`,
       );
     }
-    const editorState = EditorState.createWithContent(novel.parts[partId]);
+    const editorState = EditorState.createWithContent(
+      novel.parts[partId].content,
+    );
     return state.map((editor, i) =>
       i === editorId ? { ...editor, editorState, partId } : editor,
     );
