@@ -22,12 +22,20 @@
     "@types/react-redux": "^7.1.1",
     "@types/redux": "^3.6.0",
     "@types/redux-saga": "^0.10.5",
+    "@typescript-eslint/eslint-plugin": "^2.2.0",
+    "@typescript-eslint/parser": "^2.2.0",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-typescript": "^4.0.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-babel-typescript": "^1.0.1",
     "prettier": "^1.18.2",
-    "prettier-tslint": "^0.4.2",
-    "tslint": "^5.18.0",
-    "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.5.3"
   },
   "dependencies": {
@@ -44,9 +52,7 @@
     "redux": "^4.0.4",
     "redux-saga": "^1.0.5",
     "regenerator-runtime": "^0.13.3",
-    "rxjs": "^6.5.2",
-    "tslint-react": "^4.0.0",
-    "tslint-react-hooks": "^2.2.1"
+    "rxjs": "^6.5.2"
   },
   "private": true
 }
