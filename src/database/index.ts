@@ -1,6 +1,5 @@
-/* tslint:disable */
-import Dexie from "dexie";
-import { RawDraftContentState } from "draft-js";
+import Dexie from 'dexie';
+import { RawDraftContentState } from 'draft-js';
 
 export type PartModel = {
   title: string;
@@ -18,11 +17,11 @@ class WLDatabase extends Dexie {
   novels: Dexie.Table<NovelModel, number>;
 
   constructor() {
-    super("WriterLighter");
+    super('WriterLighter');
     this.version(1).stores({
-      novels: "++id,title,author"
+      novels: '++id,title,author',
     });
-    this.novels = this.table("novels");
+    this.novels = this.table('novels');
   }
 }
 

@@ -10,9 +10,7 @@ export const openedNovel = novlesDomain
     (state, { partId, content }) =>
       state && {
         ...state,
-        parts: state.parts.map((part, id) =>
-          id === partId ? { ...part, content } : part,
-        ),
+        parts: state.parts.map((part, id) => (id === partId ? { ...part, content } : part)),
       },
   )
   .on(
@@ -29,6 +27,5 @@ export const unsavedPart = novlesDomain
   .on(savePart, (state, { partId }) => new Set([...Array.from(state), partId]))
   .on(
     savePart.done,
-    (state, { params: { partId } }) =>
-      new Set(Array.from(state).filter(id => id !== partId)),
+    (state, { params: { partId } }) => new Set(Array.from(state).filter(id => id !== partId)),
   );

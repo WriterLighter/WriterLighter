@@ -1,5 +1,5 @@
 import { EditorState } from 'draft-js';
-import { openedNovel } from './../novels/stores';
+import { openedNovel } from '../novels/stores';
 import { editorDomain } from './domain';
 import { change, load, open } from './events';
 
@@ -18,19 +18,11 @@ export const editors = editorDomain
       throw new Error('novel is not opened.');
     }
     if (!novel.parts[partId]) {
-      throw new Error(
-        `partId: ${partId} is not found in novel: ${novel.title}`,
-      );
+      throw new Error(`partId: ${partId} is not found in novel: ${novel.title}`);
     }
-    const editorState = EditorState.createWithContent(
-      novel.parts[partId].content,
-    );
-    return state.map((editor, i) =>
-      i === editorId ? { ...editor, editorState, partId } : editor,
-    );
+    const editorState = EditorState.createWithContent(novel.parts[partId].content);
+    return state.map((editor, i) => (i === editorId ? { ...editor, editorState, partId } : editor));
   })
   .on(change, (state, { editorState, editorId }) =>
-    state.map(editor =>
-      editor.id === editorId ? { ...editor, editorState } : editor,
-    ),
+    state.map(editor => (editor.id === editorId ? { ...editor, editorState } : editor)),
   );
