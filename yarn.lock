@@ -2620,10 +2620,10 @@ effector-react@20.2.2:
   resolved "https://registry.yarnpkg.com/effector-react/-/effector-react-20.2.2.tgz#e61a30f5d358e9818dade736aa4a8bdcdcbe4b53"
   integrity sha512-wFYJvBcsze3JWiBaZSq5aFlw518A8nllNUukPDnlsKhAjcfxXK+nZSaoMDJ94vZd9zZnwu04ED0iCHYrPL5/2Q==
 
-effector@20.1.1:
-  version "20.1.1"
-  resolved "https://registry.yarnpkg.com/effector/-/effector-20.1.1.tgz#dd33c3c77c0d5c21e8abf640e2b4749b74cff4f9"
-  integrity sha512-UYYjYgLI5GTyHykJH8jklyf4BWYUoFx1vUWY50677Ph92wNmRQCqtb+cRGoLWovP/DntbeBT+4XVA71Ki+C2eQ==
+effector@20.9.1:
+  version "20.9.1"
+  resolved "https://registry.yarnpkg.com/effector/-/effector-20.9.1.tgz#162c6fd0e5490a0372e00fa9236c5a5a337bf62a"
+  integrity sha512-uzUXffUGetIANRaGItRLhtVCnGyJ6xd5tyZh/vcXWKJ/ycx3oYHvRNAshYMYCWlKkk9oQALScNnFBHF8Wucvtg==
   dependencies:
     symbol-observable "^1.2.0"
 
