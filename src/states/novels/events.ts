@@ -1,8 +1,4 @@
 import { ContentState, convertFromRaw, convertToRaw } from 'draft-js';
-import database, { NovelModel } from '../../database';
-import { PartModel } from './../../database/index';
-import { change } from './../editor/events';
-import { editors } from './../editor/stores';
 import database, { NovelModel, PartModel } from '../../database';
 import { change } from '../editor/events';
 import { editors } from '../editor/stores';
@@ -62,8 +58,8 @@ export const open = novlesDomain.effect<{ id: number }, NovelState>('open', {
 });
 
 export const saveInfo = novlesDomain.effect<
-{ changes: Partial<Omit<NovelModel, 'parts' | 'id'>> },
-void
+  { changes: Partial<Omit<NovelModel, 'parts' | 'id'>> },
+  void
 >('save', {
   handler: async ({ changes }) => {
     const opened = openedNovel.getState();
