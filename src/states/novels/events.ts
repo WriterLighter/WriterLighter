@@ -2,7 +2,7 @@ import { ContentState, convertFromRaw, convertToRaw } from 'draft-js';
 import database, { NovelModel, PartModel } from '../../database';
 import { change } from '../editor/events';
 import { editors } from '../editor/stores';
-import { novlesDomain } from './domain';
+import { novelsDomain } from './domain';
 import { openedNovel } from './stores';
 import { NovelState, PartState } from './types';
 
@@ -48,7 +48,7 @@ const waitForDelayedSave = () =>
     };
   });
 
-export const open = novlesDomain.effect<{ id: number }, NovelState>('open', {
+export const open = novelsDomain.effect<{ id: number }, NovelState>('open', {
   handler: async ({ id }) => {
     const novel = await database.novels.get(id);
     if (!novel) throw new Error(`novelId: ${id} not found.`);
@@ -57,7 +57,7 @@ export const open = novlesDomain.effect<{ id: number }, NovelState>('open', {
   },
 });
 
-export const saveInfo = novlesDomain.effect<
+export const saveInfo = novelsDomain.effect<
   { changes: Partial<Omit<NovelModel, 'parts' | 'id'>> },
   void
 >('save', {
@@ -73,7 +73,7 @@ export const saveInfo = novlesDomain.effect<
   },
 });
 
-export const savePart = novlesDomain.effect<{ partId: number; content: ContentState }, void>(
+export const savePart = novelsDomain.effect<{ partId: number; content: ContentState }, void>(
   'savePart',
   {
     handler: async ({ partId, content }) => {
@@ -93,7 +93,7 @@ export const savePart = novlesDomain.effect<{ partId: number; content: ContentSt
   },
 );
 
-export const createNovel = novlesDomain.effect<Pick<NovelModel, 'title' | 'author'>, NovelState>(
+export const createNovel = novelsDomain.effect<Pick<NovelModel, 'title' | 'author'>, NovelState>(
   'createNovel',
   {
     handler: async ({ title, author }) => {

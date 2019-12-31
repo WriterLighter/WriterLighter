@@ -1,8 +1,8 @@
-import { novlesDomain } from './domain';
+import { novelsDomain } from './domain';
 import { open, saveInfo, savePart } from './events';
 import { NovelState } from './types';
 
-export const openedNovel = novlesDomain
+export const openedNovel = novelsDomain
   .store<NovelState | null>(null)
   .on(open.done, (_, { result }) => result)
   .on(
@@ -22,7 +22,7 @@ export const openedNovel = novlesDomain
       },
   );
 
-export const unsavedPart = novlesDomain
+export const unsavedPart = novelsDomain
   .store<Set<number>>(new Set())
   .on(savePart, (state, { partId }) => new Set([...Array.from(state), partId]))
   .on(
