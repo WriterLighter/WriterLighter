@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    plugin(function ({ addUtilities, addComponents, e, prefix, config }) {
+    plugin(function ({ addUtilities }) {
       addUtilities({
         '.writing-horizontal': {
           'writing-mode': 'horizontal-tb',
