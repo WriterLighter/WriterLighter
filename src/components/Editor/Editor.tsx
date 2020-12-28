@@ -1,3 +1,4 @@
+import { Box, Textarea } from '@chakra-ui/react';
 import { FormEvent, useEffect, useRef, useState, VFC } from 'react';
 
 import { Value, EditorProps } from './types';
@@ -26,17 +27,26 @@ export const Editor: VFC<EditorProps> = ({ value, onChange, direction }) => {
   };
 
   return (
-    <div
-      className={`${
-        direction === 'horizontal'
-          ? 'writing-horizontal max-w-full '
-          : direction === 'vertical'
-          ? 'writing-vertical max-h-full '
-          : ''
-      }min-h-full min-w-full focus:outline-none focus:ring whitespace-pre-wrap`}
+    <Box
+      as="div"
+      sx={{
+        writingMode:
+          direction === 'horizontal'
+            ? 'horizontal-tb'
+            : direction === 'vertical'
+            ? 'vertical-rl'
+            : '',
+      }}
+      maxH={direction === 'vertical' ? 'full' : undefined}
+      maxW={direction === 'horizontal' ? 'full' : undefined}
+      minH="full"
+      minW="full"
+      whiteSpace="pre-wrap"
       onInput={handleInput}
       ref={inputRef}
       contentEditable
+      lineHeight={2}
+      _focus={{ outline: 'none', boxShadow: 'outline' }}
     />
   );
 };
