@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import {
+  ClipboardEvent,
   FormEvent,
   useCallback,
   useEffect,
@@ -9,6 +10,20 @@ import {
 } from 'react';
 
 import { Value, EditorProps } from './types';
+
+const handlePaste = (event: ClipboardEvent<HTMLDivElement>) => {
+  event.preventDefault();
+  const text = event.clipboardData.getData('text/plain');
+  const selection = document.getSelection();
+
+  if (selection === null) {
+    return;
+  }
+
+  selection.deleteFromDocument();
+  selection.getRangeAt(0)?.insertNode(document.createTextNode(text));
+  selection.collapseToEnd();
+};
 
 export const Editor: VFC<EditorProps> = ({ value, onChange, direction }) => {
   const [innerValue, setInnerValue] = useState<Value>('');
@@ -57,6 +72,7 @@ export const Editor: VFC<EditorProps> = ({ value, onChange, direction }) => {
       contentEditable
       lineHeight={2}
       _focus={{ outline: 'none', boxShadow: 'outline' }}
+      onPaste={handlePaste}
     />
   );
 };
