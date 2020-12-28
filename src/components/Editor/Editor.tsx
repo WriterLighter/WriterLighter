@@ -1,5 +1,12 @@
 import { Box, Textarea } from '@chakra-ui/react';
-import { FormEvent, useEffect, useRef, useState, VFC } from 'react';
+import {
+  FormEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  VFC,
+} from 'react';
 
 import { Value, EditorProps } from './types';
 
@@ -19,12 +26,15 @@ export const Editor: VFC<EditorProps> = ({ value, onChange, direction }) => {
     }
   }, [innerValue, value]);
 
-  const handleInput = (event: FormEvent<HTMLElement>) => {
-    const newText = event.currentTarget.innerText;
+  const handleInput = useCallback(
+    (event: FormEvent<HTMLElement>) => {
+      const newText = event.currentTarget.innerText;
 
-    setInnerValue(newText);
-    onChange(newText);
-  };
+      setInnerValue(newText);
+      onChange(newText);
+    },
+    [onChange]
+  );
 
   return (
     <Box
