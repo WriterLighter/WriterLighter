@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import {
   ClipboardEvent,
   FormEvent,
@@ -9,47 +9,31 @@ import {
   VFC,
 } from 'react';
 
-import { Value, EditorProps } from './types';
+import { Value, EditorProps, EditorElementProps } from './types';
 
-const handlePaste = (event: ClipboardEvent<HTMLDivElement>) => {
-  event.preventDefault();
-  const text = event.clipboardData.getData('text/plain');
-  const selection = document.getSelection();
-
-  if (selection === null) {
-    return;
+export const EditorElement: VFC<EditorElementProps> = ({ value }) => {
+  if (value.name === 'text') {
+    return (
+      <Text display="inline" as="span">
+        {value.value}
+      </Text>
+    );
   }
 
-  selection.deleteFromDocument();
-  selection.getRangeAt(0)?.insertNode(document.createTextNode(text));
-  selection.collapseToEnd();
+  const children = value.children.map((childValue) => (
+    <EditorElement value={childValue} key={JSON.stringify(childValue)} />
+  ));
+
+  switch (value.name) {
+    case 'line':
+      return <Text as="p">{children}</Text>;
+    default:
+      throw new Error('Invalid child value');
+  }
 };
 
 export const Editor: VFC<EditorProps> = ({ value, onChange, direction }) => {
-  const [innerValue, setInnerValue] = useState<Value>('');
-
   const inputRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // when value is changed by program. not by user types key.
-    if (innerValue !== value) {
-      setInnerValue(value);
-
-      if (inputRef.current !== null) {
-        inputRef.current.innerText = value;
-      }
-    }
-  }, [innerValue, value]);
-
-  const handleInput = useCallback(
-    (event: FormEvent<HTMLElement>) => {
-      const newText = event.currentTarget.innerText;
-
-      setInnerValue(newText);
-      onChange(newText);
-    },
-    [onChange]
-  );
 
   return (
     <Box
@@ -67,12 +51,14 @@ export const Editor: VFC<EditorProps> = ({ value, onChange, direction }) => {
       minH="full"
       minW="full"
       whiteSpace="pre-wrap"
-      onInput={handleInput}
       ref={inputRef}
       contentEditable
       lineHeight={2}
       _focus={{ outline: 'none', boxShadow: 'outline' }}
-      onPaste={handlePaste}
-    />
+    >
+      {value.children.map((childValue) => (
+        <EditorElement value={childValue} key={JSON.stringify(childValue)} />
+      ))}
+    </Box>
   );
 };

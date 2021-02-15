@@ -3,7 +3,10 @@ import { useCallback, useState } from 'react';
 import { EditorProps, Value, Direction } from './types';
 
 export const useEditorState = (): EditorProps => {
-  const [value, setValue] = useState<Value>('');
+  const [value, setValue] = useState<Value>({
+    name: 'root',
+    children: [{ name: 'line', children: [{ name: 'text', value: '' }] }],
+  });
   const [direction, setDirection] = useState<Direction>('vertical');
 
   const toggleDirection = useCallback(
