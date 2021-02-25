@@ -20,8 +20,6 @@ module.exports = {
 
     // Prettier integration
     'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react',
   ],
   env: {
     es6: true,
