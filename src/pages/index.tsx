@@ -15,8 +15,10 @@ const IndexPage: VFC = () => {
         <title>WriterLighter</title>
       </Head>
       <ButtonGroup p="2">
-        <Button variant="ghost" h="10" p="2">
-          <Logo />
+        <Button variant="ghost" p="2">
+          <Box as="span" display="inline-block" h="10" w="10">
+            <Logo />
+          </Box>
         </Button>
       </ButtonGroup>
       <Box flexGrow={1} overflow="scroll">
