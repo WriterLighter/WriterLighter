@@ -34,7 +34,7 @@ export const Logo: VFC<{ animated?: boolean }> = ({ animated }) => (
             values="#EBEBEB; #B8B8B8; #EBEBEB"
             dur="4s"
             repeatCount="indefinite"
-          ></animate>
+          />
         </stop>
         <stop offset="1">
           <animate
@@ -42,7 +42,7 @@ export const Logo: VFC<{ animated?: boolean }> = ({ animated }) => (
             values="#B8B8B8; #EBEBEB; #B8B8B8"
             dur="4s"
             repeatCount="indefinite"
-          ></animate>
+          />
         </stop>
       </linearGradient>
       <linearGradient
