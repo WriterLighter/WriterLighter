@@ -7,6 +7,7 @@ import { theme } from '../theme';
 const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <Component {...pageProps} />
     </ChakraProvider>
   );
