@@ -11,16 +11,16 @@ export const Logo: VFC<{ animated?: boolean }> = ({ animated = false }) => {
   const isRunningRef = useRef<boolean>(false);
 
   useEffect(() => {
-    if (!animated) {
-      isRunningRef.current = false;
-      return;
-    }
+    (async () => {
+      if (!animated) {
+        isRunningRef.current = false;
+        return;
+      }
 
-    if (isRunningRef.current) {
-      return;
-    }
+      if (isRunningRef.current) {
+        return;
+      }
 
-    const anim = async () => {
       isRunningRef.current = true;
       while (isRunningRef.current) {
         await controls.start('flash');
@@ -28,9 +28,7 @@ export const Logo: VFC<{ animated?: boolean }> = ({ animated = false }) => {
       }
       isRunningRef.current = false;
       controls.stop();
-    };
-
-    anim();
+    })();
   }, [animated, controls]);
 
   return (
