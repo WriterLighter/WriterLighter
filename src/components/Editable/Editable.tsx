@@ -1,3 +1,4 @@
+import { Flex } from '@chakra-ui/react';
 import { VFC } from 'react';
 import { Editable as SlateEditable } from 'slate-react';
 
@@ -7,32 +8,49 @@ export const Editable: VFC<{ direction: 'vertical' | 'horizontal' }> = ({
   direction,
 }) => {
   return (
-    <SlateEditable
-      placeholder="自由にお書き下さい。"
-      style={{
-        lineHeight: 2,
-        height: direction === 'vertical' ? '40rem' : 'auto',
-        width: direction === 'horizontal' ? '40rem' : 'auto',
-        minHeight: direction === 'horizontal' ? '100%' : 0,
-        minWidth: direction === 'vertical' ? '100%' : 0,
-        flexGrow: 1,
-        paddingTop: direction === 'horizontal' ? '4rem' : 0,
-        paddingBottom: direction === 'horizontal' ? '50vh' : 0,
-        paddingRight: direction === 'vertical' ? '4rem' : 0,
-        paddingLeft: direction === 'vertical' ? '50vw' : 0,
-        marginTop: direction === 'vertical' ? 'auto' : 0,
-        marginBottom: direction === 'vertical' ? 'auto' : 0,
-        marginRight: direction === 'horizontal' ? 'auto' : 0,
-        marginLeft: direction === 'horizontal' ? 'auto' : 0,
+    <Flex
+      h="max-content"
+      w="max-content"
+      minH="full"
+      minW="full"
+      alignItems="center"
+      flexDir={direction === 'vertical' ? 'row' : 'column'}
+    >
+      <SlateEditable
+        placeholder="自由にお書き下さい。"
+        style={{
+          lineHeight: 2,
 
-        writingMode:
-          direction === 'horizontal'
-            ? 'horizontal-tb'
-            : direction === 'vertical'
-            ? 'vertical-rl'
-            : undefined,
-      }}
-      renderElement={renderElement}
-    />
+          height: '100%',
+          width: '100%',
+
+          maxHeight: direction === 'vertical' ? '40rem' : 'max-content',
+          maxWidth: direction === 'horizontal' ? '40rem' : 'max-content',
+
+          minHeight: direction === 'horizontal' ? '100%' : 0,
+          minWidth: direction === 'vertical' ? '100%' : 0,
+
+          paddingTop: direction === 'horizontal' ? '4rem' : '1rem',
+          paddingBottom: direction === 'horizontal' ? '50vh' : '1rem',
+          paddingRight: direction === 'vertical' ? '4rem' : '1rem',
+          paddingLeft: direction === 'vertical' ? '50vw' : '1rem',
+
+          /*
+          marginTop: direction === 'vertical' ? 'auto' : 0,
+          marginBottom: direction === 'vertical' ? 'auto' : 0,
+          marginRight: direction === 'horizontal' ? 'auto' : 0,
+          marginLeft: direction === 'horizontal' ? 'auto' : 0,
+          */
+
+          writingMode:
+            direction === 'horizontal'
+              ? 'horizontal-tb'
+              : direction === 'vertical'
+              ? 'vertical-rl'
+              : undefined,
+        }}
+        renderElement={renderElement}
+      />
+    </Flex>
   );
 };
