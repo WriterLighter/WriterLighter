@@ -35,13 +35,6 @@ export const Editable: VFC<{ direction: 'vertical' | 'horizontal' }> = ({
           paddingRight: direction === 'vertical' ? '4rem' : '1rem',
           paddingLeft: direction === 'vertical' ? '50vw' : '1rem',
 
-          /*
-          marginTop: direction === 'vertical' ? 'auto' : 0,
-          marginBottom: direction === 'vertical' ? 'auto' : 0,
-          marginRight: direction === 'horizontal' ? 'auto' : 0,
-          marginLeft: direction === 'horizontal' ? 'auto' : 0,
-          */
-
           writingMode:
             direction === 'horizontal'
               ? 'horizontal-tb'
